@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="ipad9_7" orientation="landscape" layout="fullscreen" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ScoreboardA" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bC-hd-Pv4" userLabel="LabelLeftScore">
+                                <rect key="frame" x="11" y="20" width="490" height="600"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="430"/>
+                                <color key="textColor" red="0.098271653566668338" green="0.088329663616666054" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Yak-YT-hnu" appends="YES" id="4QH-f5-pfz"/>
+                                    <outletCollection property="gestureRecognizers" destination="o9o-0G-etB" appends="YES" id="Uoq-gm-Ngs"/>
+                                </connections>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXb-VG-XQg" userLabel="LabelRightScore">
+                                <rect key="frame" x="523" y="20" width="490" height="600"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="430"/>
+                                <color key="textColor" red="1" green="0.22743300243965692" blue="0.29234019896515762" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="TaP-3W-HNC" appends="YES" id="SME-Yn-yHE"/>
+                                    <outletCollection property="gestureRecognizers" destination="GJM-Ui-ovN" appends="YES" id="UOu-Vg-WV2"/>
+                                </connections>
+                            </label>
+                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="2" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7T-kR-dyZ" userLabel="LabelServingPlayer">
+                                <rect key="frame" x="462" y="638" width="100" height="120"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
+                                <gestureRecognizers/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="150"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="mMq-Qp-Aac" appends="YES" id="lTS-tU-O11"/>
+                                </connections>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="mxX-Dc-iX8" appends="YES" id="Bxk-rF-Fcn"/>
+                            <outletCollection property="gestureRecognizers" destination="AT6-b8-3ph" appends="YES" id="gwS-CS-uUg"/>
+                        </connections>
+                    </view>
+                    <connections>
+                        <outlet property="labelLeftScore" destination="4bC-hd-Pv4" id="Kpj-dN-Tvx"/>
+                        <outlet property="labelRightScore" destination="dXb-VG-XQg" id="jB1-aA-gJg"/>
+                        <outlet property="labelServingPlayer" destination="U7T-kR-dyZ" id="00g-WX-3xs"/>
+                        <outlet property="tapLeftOnce" destination="Yak-YT-hnu" id="09C-M2-JUs"/>
+                        <outlet property="tapLeftTwice" destination="o9o-0G-etB" id="iNP-lu-N6G"/>
+                        <outlet property="tapRightOnce" destination="TaP-3W-HNC" id="XO8-E7-9Wd"/>
+                        <outlet property="tapRightTwice" destination="GJM-Ui-ovN" id="a0C-aO-k3S"/>
+                        <outlet property="view" destination="8bC-Xf-vdC" id="0IS-XO-eLV"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer delaysTouchesEnded="NO" id="Yak-YT-hnu" userLabel="TapLeftOnce">
+                    <connections>
+                        <action selector="leftScodeTapOnce:" destination="BYZ-38-t0r" id="gLk-ec-M5F"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer delaysTouchesEnded="NO" numberOfTapsRequired="2" id="o9o-0G-etB" userLabel="TapLeftTwice">
+                    <connections>
+                        <action selector="leftScoreTapTwice:" destination="BYZ-38-t0r" id="ars-J6-DWa"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer delaysTouchesEnded="NO" id="TaP-3W-HNC" userLabel="TapRightOnce">
+                    <connections>
+                        <action selector="rightScoreTap:" destination="BYZ-38-t0r" id="GOD-VH-LtQ"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer delaysTouchesEnded="NO" numberOfTapsRequired="2" id="GJM-Ui-ovN" userLabel="TapRightTwice">
+                    <connections>
+                        <action selector="rightScoreTapTwice:" destination="BYZ-38-t0r" id="DUG-0Y-oRR"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="mxX-Dc-iX8" userLabel="SwipeGestureRight">
+                    <connections>
+                        <action selector="swap:" destination="BYZ-38-t0r" id="kxp-Zq-1vN"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="AT6-b8-3ph" userLabel="SwipeGestureLeft">
+                    <connections>
+                        <action selector="swap:" destination="BYZ-38-t0r" id="l3R-xG-5em"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <tapGestureRecognizer id="mMq-Qp-Aac" userLabel="TapServingPlayer">
+                    <connections>
+                        <action selector="servingPlayerTap:" destination="BYZ-38-t0r" id="tJc-9K-JLU"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="31.640624999999996" y="29.6875"/>
+        </scene>
+    </scenes>
+</document>
