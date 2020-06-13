@@ -7,18 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6602E4A7249539E400271A83 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6602E4A5249539E400271A83 /* Main_iPhone.storyboard */; };
 		66E6B0522028F8450042F2F5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E6B0512028F8450042F2F5 /* AppDelegate.swift */; };
 		66E6B0542028F8450042F2F5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66E6B0532028F8450042F2F5 /* ViewController.swift */; };
-		66E6B0572028F8450042F2F5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E6B0552028F8450042F2F5 /* Main.storyboard */; };
+		66E6B0572028F8450042F2F5 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E6B0552028F8450042F2F5 /* Main_iPad.storyboard */; };
 		66E6B0592028F8450042F2F5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66E6B0582028F8450042F2F5 /* Assets.xcassets */; };
 		66E6B05C2028F8450042F2F5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 66E6B05A2028F8450042F2F5 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6602E4A6249539E400271A83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		66E6B04E2028F8450042F2F5 /* ScoreboardA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScoreboardA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		66E6B0512028F8450042F2F5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		66E6B0532028F8450042F2F5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		66E6B0562028F8450042F2F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		66E6B0562028F8450042F2F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		66E6B0582028F8450042F2F5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66E6B05B2028F8450042F2F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		66E6B05D2028F8450042F2F5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -35,9 +37,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6602E4A42495386400271A83 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				6602E4A5249539E400271A83 /* Main_iPhone.storyboard */,
+				66E6B0552028F8450042F2F5 /* Main_iPad.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
 		66E6B0452028F8440042F2F5 = {
 			isa = PBXGroup;
 			children = (
+				6602E4A42495386400271A83 /* Storyboards */,
 				66E6B0502028F8450042F2F5 /* ScoreboardA */,
 				66E6B04F2028F8450042F2F5 /* Products */,
 			);
@@ -56,7 +68,6 @@
 			children = (
 				66E6B0512028F8450042F2F5 /* AppDelegate.swift */,
 				66E6B0532028F8450042F2F5 /* ViewController.swift */,
-				66E6B0552028F8450042F2F5 /* Main.storyboard */,
 				66E6B0582028F8450042F2F5 /* Assets.xcassets */,
 				66E6B05A2028F8450042F2F5 /* LaunchScreen.storyboard */,
 				66E6B05D2028F8450042F2F5 /* Info.plist */,
@@ -124,9 +135,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6602E4A7249539E400271A83 /* Main_iPhone.storyboard in Resources */,
 				66E6B05C2028F8450042F2F5 /* LaunchScreen.storyboard in Resources */,
 				66E6B0592028F8450042F2F5 /* Assets.xcassets in Resources */,
-				66E6B0572028F8450042F2F5 /* Main.storyboard in Resources */,
+				66E6B0572028F8450042F2F5 /* Main_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,12 +157,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		66E6B0552028F8450042F2F5 /* Main.storyboard */ = {
+		6602E4A5249539E400271A83 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6602E4A6249539E400271A83 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		66E6B0552028F8450042F2F5 /* Main_iPad.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				66E6B0562028F8450042F2F5 /* Base */,
 			);
-			name = Main.storyboard;
+			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		66E6B05A2028F8450042F2F5 /* LaunchScreen.storyboard */ = {
@@ -287,7 +307,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jmarusak.ScoreboardA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -303,7 +323,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jmarusak.ScoreboardA;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 2;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
