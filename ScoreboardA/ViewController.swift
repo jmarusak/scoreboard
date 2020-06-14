@@ -13,10 +13,13 @@ class ViewController: UIViewController {
     var rightScore = 0
     var swapAfterPoints = 0
     var servingChangeCount = 0
+    var servingPosessionLeft = true;
     
     @IBOutlet weak var labelLeftScore: UILabel!
     @IBOutlet weak var labelRightScore: UILabel!
     @IBOutlet weak var labelServingPlayer: UILabel!
+    @IBOutlet weak var labelServingPlayerSeq: UILabel!
+    @IBOutlet weak var labelSwapSideIndicator: UILabel!
     
     @IBOutlet weak var tapRightOnce: UITapGestureRecognizer!
     @IBOutlet weak var tapRightTwice: UITapGestureRecognizer!
@@ -50,30 +53,37 @@ class ViewController: UIViewController {
             rightScore = 0
             labelRightScore.text = String(rightScore)
             
-            labelServingPlayer.text = "1"
-            
             swapAfterPoints = 0
+            
+            servingChangeCount = 0
+            servingPosessionLeft=true
+            labelServingPlayer.text = "<"
+            labelSwapSideIndicator.text = ""
+            
         }
     }
 
-    @IBAction func rightScoreTap(_ sender: UITapGestureRecognizer) {
-        rightScore += 1
-        labelRightScore.text = String(rightScore)
-        
-        swapCourtSideReminder()
-    }
-    
-    @IBAction func rightScoreTapTwice(_ sender: UITapGestureRecognizer) {
-        if rightScore > 0 {
-            rightScore -= 1
-            labelRightScore.text = String(rightScore)
-        }
-    }
-    
     @IBAction func leftScodeTapOnce(_ sender: UITapGestureRecognizer) {
         leftScore += 1
         labelLeftScore.text = String(leftScore)
- 
+        
+        if !servingPosessionLeft {
+            toggleServingPosession()
+            nextServingPlayerSeq()
+        }
+
+        swapCourtSideReminder()
+    }
+    
+    @IBAction func rightScoreTap(_ sender: UITapGestureRecognizer) {
+        rightScore += 1
+        labelRightScore.text = String(rightScore)
+
+        if servingPosessionLeft {
+            toggleServingPosession()
+            nextServingPlayerSeq()
+        }
+        
         swapCourtSideReminder()
     }
     
@@ -84,6 +94,12 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func rightScoreTapTwice(_ sender: UITapGestureRecognizer) {
+        if rightScore > 0 {
+            rightScore -= 1
+            labelRightScore.text = String(rightScore)
+        }
+    }
     
     @IBAction func swap(_ sender: UISwipeGestureRecognizer) {
         
@@ -97,33 +113,46 @@ class ViewController: UIViewController {
         let tempColor = labelLeftScore.textColor
         labelLeftScore.textColor = labelRightScore.textColor
         labelRightScore.textColor = tempColor
+        
+        toggleServingPosession()
+        
+        labelSwapSideIndicator.text = ""
                         
         // first court side swap (if any), set point sum for swapping notification
         if swapAfterPoints == 0 {
             swapAfterPoints = leftScore + rightScore
         }
-        
-        // stop swap court side reminder
-        labelServingPlayer.alpha = 1.0
     }
     
     @IBAction func servingPlayerTap(_ sender: UITapGestureRecognizer) {
-            nextServingPlayer()
+        toggleServingPosession()
     }
     
-    func nextServingPlayer() {
+    func nextServingPlayerSeq() {
         let playerNumbers = ["1", "1", "2", "2"]
         
-        labelServingPlayer.text = playerNumbers[servingChangeCount%4]
         servingChangeCount += 1
+        labelServingPlayerSeq.text = playerNumbers[servingChangeCount%4]
     }
     
     func swapCourtSideReminder() {
         if swapAfterPoints != 0 && ((leftScore + rightScore) % swapAfterPoints) == 0 {
-            labelServingPlayer.alpha = 0.0
+            labelSwapSideIndicator.text = "="
         }
         else {
-            labelServingPlayer.alpha = 1.0
+            labelSwapSideIndicator.text = ""
+        }
+
+    }
+    
+    func toggleServingPosession() {
+        servingPosessionLeft.toggle()
+        
+        if servingPosessionLeft {
+            labelServingPlayer.text = "<"
+        }
+        else {
+            labelServingPlayer.text = ">"
         }
     }
 }
