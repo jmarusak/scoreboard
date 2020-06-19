@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4bC-hd-Pv4" userLabel="LabelLeftScore">
-                                <rect key="frame" x="9" y="44" width="245" height="225"/>
+                                <rect key="frame" x="9" y="76" width="245" height="225"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
@@ -30,7 +30,7 @@
                                 </connections>
                             </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXb-VG-XQg" userLabel="LabelRightScore">
-                                <rect key="frame" x="314" y="44" width="245" height="225"/>
+                                <rect key="frame" x="313" y="76" width="245" height="225"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
@@ -42,26 +42,8 @@
                                     <outletCollection property="gestureRecognizers" destination="GJM-Ui-ovN" appends="YES" id="UOu-Vg-WV2"/>
                                 </connections>
                             </label>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Th-gY-4Wr" userLabel="LabelServingPlayerSeq">
-                                <rect key="frame" x="262" y="44" width="45" height="61"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
-                                <gestureRecognizers/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="70"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UeR-Zz-7ZX" userLabel="LabelSwapSideIndicator">
-                                <rect key="frame" x="262" y="208" width="45" height="61"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
-                                <gestureRecognizers/>
-                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="70"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="&lt;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U7T-kR-dyZ" userLabel="LabelServingPlayer">
-                                <rect key="frame" x="262" y="126" width="45" height="61"/>
+                                <rect key="frame" x="261" y="146" width="45" height="61"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <gestureRecognizers/>
@@ -72,6 +54,30 @@
                                     <outletCollection property="gestureRecognizers" destination="mMq-Qp-Aac" appends="YES" id="lTS-tU-O11"/>
                                 </connections>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FHv-Qk-bQQ" userLabel="TextFieldPlayer1">
+                                <rect key="frame" x="41" y="20" width="80" height="44.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="2" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mbE-49-90Z" userLabel="TextFieldPlayer2">
+                                <rect key="frame" x="142" y="20" width="80" height="44.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="1" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fki-2M-j1K" userLabel="TextFieldPlayer3">
+                                <rect key="frame" x="345" y="19" width="80" height="44.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" text="2" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="13T-4m-nSN" userLabel="TextFieldPlayer4">
+                                <rect key="frame" x="447" y="19" width="80" height="44.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="29"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters" returnKeyType="done"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <gestureRecognizers/>
@@ -85,12 +91,14 @@
                         <outlet property="labelLeftScore" destination="4bC-hd-Pv4" id="Kpj-dN-Tvx"/>
                         <outlet property="labelRightScore" destination="dXb-VG-XQg" id="jB1-aA-gJg"/>
                         <outlet property="labelServingPlayer" destination="U7T-kR-dyZ" id="00g-WX-3xs"/>
-                        <outlet property="labelServingPlayerSeq" destination="9Th-gY-4Wr" id="P4e-MH-CV6"/>
-                        <outlet property="labelSwapSideIndicator" destination="UeR-Zz-7ZX" id="aEh-7o-lRP"/>
                         <outlet property="tapLeftOnce" destination="Yak-YT-hnu" id="09C-M2-JUs"/>
                         <outlet property="tapLeftTwice" destination="o9o-0G-etB" id="iNP-lu-N6G"/>
                         <outlet property="tapRightOnce" destination="TaP-3W-HNC" id="XO8-E7-9Wd"/>
                         <outlet property="tapRightTwice" destination="GJM-Ui-ovN" id="a0C-aO-k3S"/>
+                        <outlet property="textFieldPlayer1" destination="FHv-Qk-bQQ" id="Dh6-j2-aet"/>
+                        <outlet property="textFieldPlayer2" destination="mbE-49-90Z" id="1BO-Dg-BrJ"/>
+                        <outlet property="textFieldPlayer3" destination="fki-2M-j1K" id="2fR-4Z-pvO"/>
+                        <outlet property="textFieldPlayer4" destination="13T-4m-nSN" id="98s-NX-DBO"/>
                         <outlet property="view" destination="8bC-Xf-vdC" id="0IS-XO-eLV"/>
                     </connections>
                 </viewController>

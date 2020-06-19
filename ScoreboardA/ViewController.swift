@@ -7,30 +7,48 @@
 //
 
 import UIKit
+import AVFoundation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     var leftScore = 0
     var rightScore = 0
     var swapAfterPoints = 0
     var servingChangeCount = 0
-    var servingPosessionLeft = true;
+    
+    enum ServingPosession {
+        case left
+        case right
+    }
+    var servingPosession = ServingPosession.left;
     
     @IBOutlet weak var labelLeftScore: UILabel!
     @IBOutlet weak var labelRightScore: UILabel!
     @IBOutlet weak var labelServingPlayer: UILabel!
-    @IBOutlet weak var labelServingPlayerSeq: UILabel!
-    @IBOutlet weak var labelSwapSideIndicator: UILabel!
+    
+    @IBOutlet weak var textFieldPlayer1: UITextField!
+    @IBOutlet weak var textFieldPlayer2: UITextField!
+    @IBOutlet weak var textFieldPlayer3: UITextField!
+    @IBOutlet weak var textFieldPlayer4: UITextField!
     
     @IBOutlet weak var tapRightOnce: UITapGestureRecognizer!
     @IBOutlet weak var tapRightTwice: UITapGestureRecognizer!
     @IBOutlet weak var tapLeftOnce: UITapGestureRecognizer!
     @IBOutlet weak var tapLeftTwice: UITapGestureRecognizer!
     
+    var servingSeq = [UITextField]();
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        textFieldPlayer1.delegate = self
+        textFieldPlayer2.delegate = self
+        textFieldPlayer3.delegate = self
+        textFieldPlayer4.delegate = self
+        
         tapRightOnce.require(toFail: tapRightTwice)
         tapLeftOnce.require(toFail: tapLeftTwice)
+        
+        reset()
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -47,19 +65,7 @@ class ViewController: UIViewController {
     
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
-            leftScore = 0
-            labelLeftScore.text = String(leftScore)
-            
-            rightScore = 0
-            labelRightScore.text = String(rightScore)
-            
-            swapAfterPoints = 0
-            
-            servingChangeCount = 0
-            servingPosessionLeft=true
-            labelServingPlayer.text = "<"
-            labelSwapSideIndicator.text = ""
-            
+            reset()
         }
     }
 
@@ -67,9 +73,8 @@ class ViewController: UIViewController {
         leftScore += 1
         labelLeftScore.text = String(leftScore)
         
-        if !servingPosessionLeft {
+        if servingPosession == .right {
             toggleServingPosession()
-            nextServingPlayerSeq()
         }
 
         swapCourtSideReminder()
@@ -79,9 +84,8 @@ class ViewController: UIViewController {
         rightScore += 1
         labelRightScore.text = String(rightScore)
 
-        if servingPosessionLeft {
+        if servingPosession == .left {
             toggleServingPosession()
-            nextServingPlayerSeq()
         }
         
         swapCourtSideReminder()
@@ -102,57 +106,117 @@ class ViewController: UIViewController {
     }
     
     @IBAction func swap(_ sender: UISwipeGestureRecognizer) {
-        
-        let tempScore = leftScore
-        leftScore = rightScore
-        rightScore = tempScore
-        
-        labelLeftScore.text = String(leftScore)
-        labelRightScore.text = String(rightScore)
-        
-        let tempColor = labelLeftScore.textColor
-        labelLeftScore.textColor = labelRightScore.textColor
-        labelRightScore.textColor = tempColor
-        
-        toggleServingPosession()
-        
-        labelSwapSideIndicator.text = ""
-                        
-        // first court side swap (if any), set point sum for swapping notification
-        if swapAfterPoints == 0 {
-            swapAfterPoints = leftScore + rightScore
-        }
+        swapCourtSide()
     }
     
     @IBAction func servingPlayerTap(_ sender: UITapGestureRecognizer) {
         toggleServingPosession()
     }
     
-    func nextServingPlayerSeq() {
-        let playerNumbers = ["1", "1", "2", "2"]
+
+    
+    func swapCourtSide() {
+        let tempScore = leftScore
+        leftScore = rightScore
+        rightScore = tempScore
+
+        labelLeftScore.text = String(leftScore)
+        labelRightScore.text = String(rightScore)
+
+        let tempColor = labelLeftScore.textColor
+        labelLeftScore.textColor = labelRightScore.textColor
+        labelRightScore.textColor = tempColor
         
-        servingChangeCount += 1
-        labelServingPlayerSeq.text = playerNumbers[servingChangeCount%4]
+        var tempPlayerInitials = textFieldPlayer1.text
+        textFieldPlayer1.text = textFieldPlayer3.text
+        textFieldPlayer3.text = tempPlayerInitials
+        tempPlayerInitials = textFieldPlayer2.text
+        textFieldPlayer2.text = textFieldPlayer4.text
+        textFieldPlayer4.text = tempPlayerInitials
+              
+
+        switch servingPosession {
+        case .left:
+            labelServingPlayer.text = ">"
+            servingPosession = .right
+        case .right:
+            labelServingPlayer.text = "<"
+            servingPosession = .left
+        }
+        serviceSeqSwap()
+        servingPlayerShow()
+                     
+        // first court side swap (if any), set point sum for swapping notification
+        if swapAfterPoints == 0 {
+         swapAfterPoints = leftScore + rightScore
+        }
+
+        // beep
+        AudioServicesPlaySystemSound(SystemSoundID(1200))
     }
     
     func swapCourtSideReminder() {
         if swapAfterPoints != 0 && ((leftScore + rightScore) % swapAfterPoints) == 0 {
-            labelSwapSideIndicator.text = "="
+            swapCourtSide()
         }
-        else {
-            labelSwapSideIndicator.text = ""
-        }
-
     }
     
     func toggleServingPosession() {
-        servingPosessionLeft.toggle()
-        
-        if servingPosessionLeft {
+        switch servingPosession {
+        case .left:
+            labelServingPlayer.text = ">"
+            servingPosession = .right
+        case .right:
             labelServingPlayer.text = "<"
+            servingPosession = .left
+        }
+
+        if rightScore + leftScore == 0 {
+           serviceSeqSwap()
         }
         else {
-            labelServingPlayer.text = ">"
+            servingChangeCount += 1
         }
+        servingPlayerShow()
     }
+    
+   func servingPlayerShow() {
+       for player in servingSeq {
+           player.backgroundColor = .white
+       }
+       servingSeq[servingChangeCount%4].backgroundColor = .lightGray
+   }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func reset() {
+        leftScore = 0
+        labelLeftScore.text = String(leftScore)
+        
+        rightScore = 0
+        labelRightScore.text = String(rightScore)
+        
+        swapAfterPoints = 0
+        
+        servingPosession = .left
+        labelServingPlayer.text = "<"
+
+        servingChangeCount = 0
+        servingSeq = [textFieldPlayer1, textFieldPlayer3, textFieldPlayer2, textFieldPlayer4]
+        servingPlayerShow()
+    }
+    
+    func serviceSeqSwap() {
+        var textFieldPlayerTmp = servingSeq[0]
+        servingSeq[0] = servingSeq[1]
+        servingSeq[1] = textFieldPlayerTmp
+        
+        textFieldPlayerTmp = servingSeq[2]
+        servingSeq[2] = servingSeq[3]
+        servingSeq[3] = textFieldPlayerTmp
+    }
+    
 }
