@@ -152,7 +152,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         }
 
         // beep
-        AudioServicesPlaySystemSound(SystemSoundID(1200))
+        AudioServicesPlaySystemSound(SystemSoundID(1352))
     }
     
     func swapCourtSideReminder() {
